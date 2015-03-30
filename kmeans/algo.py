@@ -23,32 +23,40 @@ class Cluster(object) :
 		self.max = None
 		self.wc = None
 		self.bc = None
+		self.nb_point = 0
 
 	def add_point(self,point) :
 		self.points.add(p)
+		self.nb_point += 1
 
 	def rm_point(self,point) :
 		self.points.remove(p)
+		self.nb_point -= 1
 
 	def min_point(self) :
-		return min(self.points)
+		self.min = min(self.points)
 
 	def max_point(self) :
-		return max(self.points)
+		self.max = max(self.points)
 
 	def wc(self) :
-		pass
+		self.wc = 0
+		for p in self.points :
+			self.wc = distance(p,self.centroid)
+		self.wc / self.nb_point
 
 	def bc(self) :
-
+		pass
 
 	def update(self) :
 		self.min = min_point()
 		self.max = max_point()
+		self.wc = wc()
 
 		
 
 class Distance(object) :
+	
 
 class Kmeans(object) :
 	
