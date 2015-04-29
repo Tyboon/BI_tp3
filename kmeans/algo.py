@@ -18,11 +18,9 @@ class Cluster(object) :
 
 	def __init__(self,p) :
 		self.centroid = p
-		self.points = []
-		self.min = None
-		self.max = None
-		self.wc = None
-		self.bc = None
+		self.points = [p]
+		self.min = p
+		self.max = p
 		self.nb_point = 0
 
 	def add_point(self,point) :
@@ -30,6 +28,7 @@ class Cluster(object) :
 		self.nb_point += 1
 
 	def rm_point(self,point) :
+                # TODO if not present
 		self.points.remove(p)
 		self.nb_point -= 1
 
@@ -45,15 +44,10 @@ class Cluster(object) :
 			self.wc = distance(p,self.centroid)
 		self.wc / self.nb_point
 
-	def bc(self) :
-		pass
-
 	def update(self) :
 		self.min = min_point()
 		self.max = max_point()
 		self.wc = wc()
-
-		
 
 class Distance(object) :
 	
