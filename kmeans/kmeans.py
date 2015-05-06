@@ -43,7 +43,7 @@ class KMeans(object) :
         choice = None
         for cluster in self.clusters :
             centroid = cluster.get_centroid()
-            dist = self.distance(centroid, point)
+            dist = self.distance(centroid, point, self.data.get_min(), self.data.get_max())
             if dist < min :
                 min = dist
                 choice = cluster
@@ -103,18 +103,6 @@ class Cluster(object) :
 
     def has_changed(self) :
         return self.changed
-
-class Point(object) :
-
-    def __init__(self, attributes) :
-        self.attributes = attributes
-        self.cluster = None
-
-    def get_cluster(self) :
-        return self.cluster
-
-    def set_cluster(self, cluster) :
-        self.cluster = cluster
 
 class CannotRemoveTheCentroidError(Exception) :
     pass
